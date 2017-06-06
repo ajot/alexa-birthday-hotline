@@ -1,13 +1,13 @@
 "use strict";
 
 module.exports = Object.freeze({
-    
+
     // App-ID. TODO: set to your own Skill App ID from the developer portal.
     appId : '',
-    
+
     //  DynamoDB Table name
-    dynamoDBTableName : 'birthdayGreeter-dev',
-    
+    dynamoDBTableName : 'birthdayHotline',
+
     /*
      *  States:
      *  START_MODE : Welcome state when the audio list has not begun.

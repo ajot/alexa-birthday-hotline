@@ -22,7 +22,7 @@ var stateHandlers = {
               //  Change state to START_MODE
               this.handler.state = constants.states.START_MODE;
 
-              var message = "Hello Ajit! It's your birthday, and I have a really special gift for you. When you're ready, say begin.";
+              var message = "Hello! It's your birthday, and I have a really special gift for you. When you're ready, say begin.";
               var reprompt = 'You can say, play the audio, to begin.';
 
               this.response.speak(message).listen(reprompt);
@@ -44,7 +44,7 @@ var stateHandlers = {
             controller.play.call(this);
         },
         'AMAZON.HelpIntent' : function () {
-            var message = "Welcome to the Birthday Greeter. You can say, play the audio, to begin";
+            var message = "Welcome to the Birthday Hotline. You can say, play the audio, to begin";
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
         },
@@ -85,7 +85,7 @@ var stateHandlers = {
             var reprompt;
             if (this.attributes['playbackFinished']) {
                 this.handler.state = constants.states.START_MODE;
-                message = "Welcome to the Birthday Greeter. You can say, play the audio, to begin";
+                message = "Welcome to the Birthday Hotline. You can say, play the audio, to begin";
                 reprompt = 'You can say, play the audio, to begin.';
             } else {
                 this.handler.state = constants.states.RESUME_DECISION_MODE;
@@ -111,7 +111,7 @@ var stateHandlers = {
         'AMAZON.StartOverIntent' : function () { controller.startOver.call(this) },
         'AMAZON.HelpIntent' : function () {
             // This will called while audio is playing and a user says "ask <invocation_name> for help"
-            var message = "You are listening to the Ajit's Birthday Greeter. You can say, Next or Previous to navigate through the playlist. " +
+            var message = "You are listening to the Birthday Hotline. You can say, Next or Previous to navigate through the playlist. " +
                 'At any time, you can say Pause to pause the audio and Resume to resume.';
             this.response.speak(message).listen(message);
             this.emit(':responseReady');
