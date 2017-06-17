@@ -215,16 +215,16 @@ Now that we have built our Voice User Interface (VUI) for our Alexa skill, we wi
 
     Once you have selected Alexa Skills Kit, click the **Next** button.
 
-7.  **Configure your function.** This screen is where we will enter the important parts of our Lambda function.  These values will only ever be visible to you, but make sure that you name your function something meaningful.  
-	8.  **Name**: You can name it whatever, but let’s name it something meaningful, like **birthdayHotlineSkill**
-	9.  **Description**:”Programming logic for the Birthday Hotline Skill”
-	10.  **Runtime**: Node.js 6.10
-	11.  **Lambda Function Code**: Leave this as is. We will come back to this in just a moment.
-	12.  **Role**: Choose an existing Role
-	13.  **Existing Role**: Select the role we created earlier.
-15. Click the **Next** button to move to the Review screen. The Review screen is a summary of your choices.  
-16. Scroll all the way down and click **Create Function** in the bottom left corner.
-17. After you create the function, the **ARN** value appears in the **top right corner**. **Copy** this value for use in the next section of the guide.
+7. **Configure your function.** This screen is where we will enter the important parts of our Lambda function.  These values will only ever be visible to you, but make sure that you name your function something meaningful.  
+	1.  **Name**: You can name it whatever, but let’s name it something meaningful, like **birthdayHotlineSkill**
+	2.  **Description**:”Programming logic for the Birthday Hotline Skill”
+	3.  **Runtime**: Node.js 6.10
+	4.  **Lambda Function Code**: Leave this as is. We will come back to this in just a moment.
+	5.  **Role**: Choose an existing Role
+	6.  **Existing Role**: Select the role we created earlier.
+8. Click the **Next** button to move to the Review screen. The Review screen is a summary of your choices.  
+9. Scroll all the way down and click **Create Function** in the bottom left corner.
+10. After you create the function, the **ARN** value appears in the **top right corner**. **Copy** this value for use in the next section of the guide.
 
     <img src="https://m.media-amazon.com/images/G/01/mobile-apps/dex/alexa/alexa-skills-kit/tutorials/quiz-game/2-12-copy-ARN._TTH_.png" />
 
@@ -254,12 +254,44 @@ We’re now ready to connect our frontend with our backend.
 —
 
 ### Let’s upload our code to the Lambda function
-1. Clone this repo
-2. Update the src/twilio-config-sample.js with your Twilio credentials, and then rename the file to twilio-config.js
-4. Zip up the code, and upload to Lambda.
+1. Clone this repo and cd into the /BirthdayHotline/src directory
+
+```
+git clone git@github.com:alexa/alexa-cookbook.git
+cd alexa-cookbook/labs/BirthdayHotline/src
+```
+
+2. Install the [Twilio Node helper library](https://www.twilio.com/docs/libraries/node)
+
+```
+npm install twilio
+```
+3. Update the src/twilio-config-sample.js with your [Twilio credentials](https://www.twilio.com/console), and then **rename** the file to twilio-config.js
+4. Create the Deployment Package for AWS Lambda by zipping the contents of the /src directory. Your /src directory will now have the following structure:
+
+```
+|- audioEventHandlers.js
+|- getRecordings.js
+|- stateHandlers.js
+|- constants.js
+|- index.js
+|- package.json   
+|- twilio-config-sample.js
+|- node_modules
+```
+
+ So, to zip the contents of the /src directory, run the following from inside the /src directory -
+
+```
+zip -X -r ../index.zip *
+```
+
+Index.zip is now your deployment package that we will upload to AWS Lambda.
+
+5. Upload the deployment package to the Lambda function we created earlier.
 
 ## Ready to test it now.
 1. Call the Twilio phone number to record a greeting.
-2. Then ask Alexa to playback the greetings by saying - Alexa, open birthday hotline.
+2. Then ask Alexa to playback the greetings by saying - *"Alexa, open birthday hotline."*
 
 Enjoy!
